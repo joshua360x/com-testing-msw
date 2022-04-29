@@ -2,7 +2,9 @@ import { render, screen } from "@testing-library/react"
 import Covi from "./components/Covi"
 
 
-
+test('should render non loading state of everything in order', async () => {
+  
+})
 
 
 
