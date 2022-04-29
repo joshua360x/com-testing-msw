@@ -1,9 +1,21 @@
-import { render, screen } from "@testing-library/react"
+import { render, screen, waitFor } from "@testing-library/react"
+import userEvent from '@testing-library/user-event'
 import Covi from "./components/Covi"
+import Main from "./views/Main"
 
 
 test('should render non loading state of everything in order', async () => {
-  
+  render(<Main />)
+
+  const dropdown = screen.getByRole('combobox')
+
+  const firstdebug = screen.debug();
+  userEvent.selectOptions(dropdown, ['TotalDeaths'])
+
+  return waitFor(() => {
+    expect(screen.debug).not.toEqual(firstdebug)
+  })
+
 })
 
 
