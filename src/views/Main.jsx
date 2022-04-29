@@ -6,7 +6,7 @@ export default function Main() {
 
   const [dataOfCovi, setDataOfCovi] = useState([])
   const [isLoading, setIsLoading] = useState(true)
-  const [sort, setSort] = useState([])
+  // const [sort, setSort] = useState([])
   const [sortMethod, setSortMethod] = useState('risk')
 
 
@@ -56,7 +56,7 @@ function handleChange(e) {
   const sortMeth = dataOfCovi.sort(function(a, b) {
     return (
 
-        a[targetFromUser] -  b[targetFromUser]
+        b[targetFromUser] -  a[targetFromUser]
       )
   });
   console.log('sortMeth :>> ', sortMeth);
@@ -65,7 +65,7 @@ function handleChange(e) {
 
 
   return (
-    
+
     <section>
     {
     isLoading ? (<h3>Hey We are Loading Your Covi Data Set</h3>) : 
