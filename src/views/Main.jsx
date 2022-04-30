@@ -32,7 +32,7 @@ useEffect(() => {
     
     const fetchData = await fetch('https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/northamerica', options)
     const json = await fetchData.json()
-    console.log(json);
+    // console.log(json);
     setDataOfCovi(json)
   }
   
