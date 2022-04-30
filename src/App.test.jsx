@@ -1,19 +1,26 @@
 import { render, screen, waitFor } from "@testing-library/react"
 import userEvent from '@testing-library/user-event'
+import { MemoryRouter } from "react-router-dom"
+// import fetch from "cross-fetch"
 import Covi from "./components/Covi"
 import Main from "./views/Main"
 
 
 test('should render non loading state of everything in order', async () => {
-  render(<Main />)
+  render( <MemoryRouter>
+    <Main />
+  </MemoryRouter>
+  )
 
-  const dropdown = screen.getByRole('combobox')
+  const dropdown = await screen.findByRole('combobox')
 
-  const firstdebug = screen.debug();
-  userEvent.selectOptions(dropdown, ['TotalDeaths'])
+  // const firstdebug = screen.debug();
+  const userE = userEvent.selectOptions(dropdown, ['TotalDeaths'])
 
   return waitFor(() => {
-    expect(screen.debug).not.toEqual(firstdebug)
+    // const seconddebug = screen.debug();
+
+    expect(userE).toBeFalsy()
   })
 
 })

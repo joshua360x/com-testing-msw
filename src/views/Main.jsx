@@ -10,34 +10,37 @@ export default function Main() {
   const [sortMethod, setSortMethod] = useState('risk')
 
 
-  useEffect(() => {
-    console.log('data :>> ', data);
-    setDataOfCovi(data)
-    setIsLoading(false)
+//   useEffect(() => {
+//     console.log('data :>> ', data);
+//     setDataOfCovi(data)
+//     setIsLoading(false)
 
-}, [])
+// }, [])
 
 
 
 // returns an array of object
-// useEffect( async () => {
-//   async function getCoviData() {
-//     const options = {
-//       method: 'GET',
-//       headers: {
-//         'X-RapidAPI-Host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com',
-//         'X-RapidAPI-Key': '6619b0d402mshbef2e4dc706792fp1e3876jsn655f3e2729c8'
-//       }
-//     };
+useEffect(() => {
+  async function getCoviData() {
+    const options = {
+      method: 'GET',
+      headers: {
+        'X-RapidAPI-Host': 'vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com',
+        'X-RapidAPI-Key': '6619b0d402mshbef2e4dc706792fp1e3876jsn655f3e2729c8'
+      }
+    };
     
-//     const fetchData = await fetch('https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/northamerica', options)
-//     const json = await fetchData.json()
-//     console.log(json);
-//   }
+    const fetchData = await fetch('https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/northamerica', options)
+    const json = await fetchData.json()
+    // console.log(json);
+    setDataOfCovi(json)
+  }
+  
+  
+  setIsLoading(false)
+  getCoviData()
 
-//   getCoviData()
-
-// }, [])
+}, [])
 
 function handleChange(e) {
   console.log(e);
