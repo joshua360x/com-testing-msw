@@ -20,7 +20,7 @@ export default function Main() {
 
 
 // returns an array of object
-useEffect( async () => {
+useEffect(() => {
   async function getCoviData() {
     const options = {
       method: 'GET',
@@ -32,12 +32,12 @@ useEffect( async () => {
     
     const fetchData = await fetch('https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/northamerica', options)
     const json = await fetchData.json()
-    // console.log(json);
+    console.log(json);
     setDataOfCovi(json)
-    setIsLoading(false)
   }
-
-
+  
+  
+  setIsLoading(false)
   getCoviData()
 
 }, [])

@@ -1,5 +1,6 @@
 import { render, screen, waitFor } from "@testing-library/react"
 import userEvent from '@testing-library/user-event'
+// import fetch from "cross-fetch"
 import Covi from "./components/Covi"
 import Main from "./views/Main"
 
