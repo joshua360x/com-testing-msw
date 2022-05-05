@@ -5,12 +5,28 @@ import { MemoryRouter } from "react-router-dom"
 import Covi from "./components/Covi"
 import Main from "./views/Main"
 
+import { rest } from "msw";
+import { setupServer } from 'msw/node'
+import { data } from "./utils/data";
+
+const handlers = [
+  rest.get('https://vaccovid-coronavirus-vaccine-and-treatment-tracker.p.rapidapi.com/api/npm-covid-data/northamerica', (req, res, ctx) => res(ctx.json([data])))
+]
+
+
+const server = setupServer(...handlers)
+
+
+beforeAll(() => server.listen())
+afterEach(() => server.resetHandlers())
+afterAll(() => server.close())
 
 test('should render non loading state of everything in order', async () => {
   render( <MemoryRouter>
     <Main />
   </MemoryRouter>
   )
+
 
   const dropdown = await screen.findByRole('combobox')
 
